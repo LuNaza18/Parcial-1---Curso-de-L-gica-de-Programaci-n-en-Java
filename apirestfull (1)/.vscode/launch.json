@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-ApirestfullApplication<apirestfull>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.examen.ApirestfullApplication",
+            "projectName": "apirestfull",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}

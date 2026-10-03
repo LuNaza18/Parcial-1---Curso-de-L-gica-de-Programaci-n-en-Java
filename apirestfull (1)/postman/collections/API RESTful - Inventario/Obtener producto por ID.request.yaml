@@ -1,0 +1,14 @@
+$kind: http-request
+url: '{{baseUrl}}/api/productos/:productoId'
+method: GET
+pathVariables:
+  - key: productoId
+    value: '1'
+    description: ID del producto que se desea obtener
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test('Responde 200', function () { pm.response.to.have.status(200); });
+      pm.test('Devuelve el producto creado', function () { pm.expect(pm.response.json().id.toString()).to.eql(pm.collectionVariables.get('productoId')); });
+    language: text/javascript
+order: 4000

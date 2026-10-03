@@ -1,0 +1,15 @@
+$kind: http-request
+url: "{{baseUrl}}/api/productos"
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: json
+  content: "{"
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test('Responde 400', function () { pm.response.to.have.status(400); });
+      pm.test('Incluye un mensaje de error', function () { pm.expect(pm.response.json().error).to.exist; });
+    language: text/javascript
+order: 9000

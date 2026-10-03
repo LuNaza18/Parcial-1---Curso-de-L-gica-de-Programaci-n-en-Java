@@ -1,0 +1,24 @@
+$kind: http-request
+url: "{{baseUrl}}/api/productos"
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "nombre": "Cafe de prueba",
+      "categoria": "Almacen",
+      "cantidad": 20,
+      "stockMinimo": 5,
+      "precio": 3200.00
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test('Responde 201', function () { pm.response.to.have.status(201); });
+      const producto = pm.response.json();
+      pm.test('Devuelve el producto creado con ID', function () { pm.expect(producto.id).to.exist; });
+      pm.collectionVariables.set('productoId', producto.id.toString());
+    language: text/javascript
+order: 3000

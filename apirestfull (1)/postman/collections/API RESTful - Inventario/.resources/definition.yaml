@@ -1,0 +1,5 @@
+$kind: collection
+description: Pruebas CRUD, stock bajo y respuestas de error para la API de productos.
+variables:
+  baseUrl: http://localhost:8080
+  productoId: ""

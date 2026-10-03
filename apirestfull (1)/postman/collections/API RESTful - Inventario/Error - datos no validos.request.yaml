@@ -1,0 +1,22 @@
+$kind: http-request
+url: "{{baseUrl}}/api/productos"
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "nombre": "",
+      "categoria": "Almacen",
+      "cantidad": -1,
+      "stockMinimo": 5,
+      "precio": -10
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test('Responde 400', function () { pm.response.to.have.status(400); });
+      pm.test('Incluye detalles de validacion', function () { pm.expect(pm.response.json().detalles).to.exist; });
+    language: text/javascript
+order: 8000

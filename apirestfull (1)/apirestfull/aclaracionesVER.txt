@@ -1,0 +1,2 @@
+Es un sistema de control de stock.
+Producto es la entidad.

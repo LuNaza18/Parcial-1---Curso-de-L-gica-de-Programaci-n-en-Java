@@ -1,0 +1,12 @@
+$kind: http-request
+url: '{{baseUrl}}/api/productos/:productoId'
+method: DELETE
+pathVariables:
+  - key: productoId
+    value: '1'
+    description: ID del producto que se desea eliminar
+scripts:
+  - type: afterResponse
+    code: pm.test('Responde 204', function () { pm.response.to.have.status(204); });
+    language: text/javascript
+order: 6000
